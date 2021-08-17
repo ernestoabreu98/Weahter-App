@@ -12,13 +12,6 @@ data class OneCallResponse(
 ): Serializable
 
 @JsonClass(generateAdapter = true)
-data class OneCallWeatherResponse (
-    @Json(name = "main") val main: String,
-    @Json(name = "description") val description: String,
-    @Json(name = "icon") val icon: String
-): Serializable
-
-@JsonClass(generateAdapter = true)
 data class OneCallDailyResponse(
     @Json(name = "dt") val date: Long,
     @Json(name = "temp") val temp: OneCallTempResponse,
@@ -30,4 +23,11 @@ data class OneCallDailyResponse(
 data class OneCallTempResponse(
     @Json(name = "min") val min: Double,
     @Json(name = "max") val max: Double
+): Serializable
+
+@JsonClass(generateAdapter = true)
+data class OneCallWeatherResponse (
+    @Json(name = "main") val main: String,
+    @Json(name = "description") val description: String,
+    @Json(name = "icon") val icon: String
 ): Serializable
