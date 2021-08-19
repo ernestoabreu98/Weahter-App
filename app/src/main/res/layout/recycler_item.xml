@@ -11,25 +11,30 @@
     app:cardCornerRadius="20dp"
     app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/weatherIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/height_150_dp" />
-
         <TextView
-            android:id="@+id/temperature"
-            android:layout_width="match_parent"
+            android:id="@+id/temperatureTexView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="@string/sample_text"
-            android:textSize="14sp" />
+            android:text="@string/sample_text_view"
+            android:layout_gravity="center"
+            android:textSize="@dimen/temperature_text_view_size"/>
+        <ImageView
+            android:id="@+id/weatherImageView"
+            android:layout_width="@dimen/height_120_dp"
+            android:layout_height="@dimen/weight_120_dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_15_dp"
+            android:text="@string/date_textview"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

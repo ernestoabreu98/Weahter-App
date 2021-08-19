@@ -14,11 +14,15 @@ class WeatherInfoAdapter(private val weatherReport: List<WeatherReport>): Recycl
 
     override fun onBindViewHolder(holder: WeatherInfoViewHolder, position: Int) {
         val weatherData = weatherReport[position]
-        val itemTitle = weatherData.date.toString()
-        val itemImage = weatherData.icon
-        holder.bind(itemTitle, itemImage)
+        val itemTitle = convertToCelsius(weatherData.temperature)
+        val itemImage = "https://openweathermap.org/img/wn/${weatherData.icon}.png"
+        val itemSubtitle = weatherData.date.toString()
+        holder.bind(itemTitle, itemImage, itemSubtitle)
     }
 
     override fun getItemCount(): Int = weatherReport.size
 
+    private fun convertToCelsius(temp: Double) : String {
+        return "${String.format("%.1f", temp)}°C"
+    }
 }

@@ -3,4 +3,8 @@
     <dimen name="zero_dp">0dp</dimen>
     <dimen name="margin_20_dp">20dp</dimen>
     <dimen name="height_150_dp">150dp</dimen>
+    <dimen name="weight_120_dp">120dp</dimen>
+    <dimen name="height_120_dp">120dp</dimen>
+    <dimen name="temperature_text_view_size">28sp</dimen>
+    <dimen name="margin_top_15_dp">15dp</dimen>
 </resources>

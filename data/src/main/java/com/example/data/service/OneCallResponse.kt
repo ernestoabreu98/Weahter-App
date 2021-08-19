@@ -21,6 +21,7 @@ data class OneCallDailyResponse(
 
 @JsonClass(generateAdapter = true)
 data class OneCallTempResponse(
+    @Json(name = "day") val day: Double,
     @Json(name = "min") val min: Double,
     @Json(name = "max") val max: Double
 ): Serializable

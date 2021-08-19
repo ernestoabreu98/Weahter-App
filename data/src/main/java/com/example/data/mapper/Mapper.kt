@@ -10,6 +10,7 @@ open class Mapper : BaseMapper<OneCallResponse, List<WeatherReport>> {
             val weather = daily.weather.first()
             WeatherReport(
                 date = daily.date,
+                temperature = daily.temp.day,
                 minTemp = daily.temp.min,
                 maxTemp = daily.temp.max,
                 title = weather.main,
