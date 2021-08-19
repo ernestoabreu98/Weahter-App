@@ -2,10 +2,8 @@ package com.example.weatherapp.presentation.recyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.example.data.service.OneCallResponse
-import com.example.data.service.WeatherReport
+import com.example.domain.entities.WeatherReport
 import com.example.weatherapp.R
 
 class WeatherInfoAdapter(private val weatherReport: List<WeatherReport>): RecyclerView.Adapter<WeatherInfoViewHolder>() {

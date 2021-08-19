@@ -1,7 +1,7 @@
 package com.example.data.service
 
-import com.example.data.mapper.BaseMapper
 import com.example.data.mapper.Mapper
+import com.example.domain.entities.WeatherReport
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -15,8 +15,6 @@ class WeatherService {
 
     }
 
-    private val mapper: Mapper = Mapper()
-
     private fun getRetrofit(): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(1, TimeUnit.MINUTES)
@@ -27,12 +25,12 @@ class WeatherService {
             .addConverterFactory(MoshiConverterFactory.create()).build()
     }
 
-    suspend fun getWeatherInfo(): List<WeatherReport>? {
-        var data: List<WeatherReport>? = null
+    suspend fun getWeatherInfo(): OneCallResponse? {
+        var data: OneCallResponse? = null
         val response = getRetrofit().create(WeatherAPI::class.java).getWeatherInfo()
         if (response.isSuccessful) {
             response.body()?.let {
-                data = mapper.transform(it)
+                data = it
             }
         }
         return data

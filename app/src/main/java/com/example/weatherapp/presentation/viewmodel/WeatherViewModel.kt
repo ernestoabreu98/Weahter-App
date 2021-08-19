@@ -3,12 +3,14 @@ package com.example.weatherapp.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.data.service.OneCallResponse
-import com.example.data.service.WeatherReport
+import com.example.domain.entities.WeatherReport
 import com.example.data.service.WeatherService
+import com.example.domain.useCases.GetWeatherReportUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class WeatherViewModel: ViewModel() {
+class WeatherViewModel(private val getWeatherReportUseCase: GetWeatherReportUseCase): ViewModel() {
 
     private var mutableOneCallResponse: MutableLiveData<List<WeatherReport>> = MutableLiveData()
     val oneCallResponse: MutableLiveData<List<WeatherReport>>
@@ -20,8 +22,9 @@ class WeatherViewModel: ViewModel() {
     }
 
     private fun onAppStarted() = viewModelScope.launch {
-        val client = WeatherService()
-        val data = client.getWeatherInfo()
-        println(data)
+        val response = withContext(Dispatchers.IO){
+            getWeatherReportUseCase()
+        }
+        mutableOneCallResponse.value = response
     }
 }

@@ -1,7 +1,7 @@
 package com.example.data.mapper
 
 import com.example.data.service.OneCallResponse
-import com.example.data.service.WeatherReport
+import com.example.domain.entities.WeatherReport
 
 open class Mapper : BaseMapper<OneCallResponse, List<WeatherReport>> {
 

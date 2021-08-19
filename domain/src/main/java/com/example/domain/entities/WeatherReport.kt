@@ -1,4 +1,4 @@
-package com.example.data.service
+package com.example.domain.entities
 
 data class WeatherReport(
     val date: Long,
