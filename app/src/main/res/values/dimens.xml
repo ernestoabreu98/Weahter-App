@@ -7,4 +7,6 @@
     <dimen name="height_120_dp">120dp</dimen>
     <dimen name="temperature_text_view_size">28sp</dimen>
     <dimen name="margin_top_15_dp">15dp</dimen>
+    <dimen name="margin_10_dp">10dp</dimen>
+    <dimen name="text_size_20_sp">20sp</dimen>
 </resources>

@@ -30,9 +30,11 @@
             android:layout_gravity="center"/>
         <TextView
             android:id="@+id/dateTextView"
+            android:textSize="@dimen/text_size_20_sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_15_dp"
+            android:layout_marginBottom="@dimen/margin_10_dp"
             android:text="@string/date_textview"
             android:layout_gravity="center"/>
 

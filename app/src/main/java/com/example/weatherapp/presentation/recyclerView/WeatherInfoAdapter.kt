@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.entities.WeatherReport
 import com.example.weatherapp.R
 import java.text.SimpleDateFormat
+import java.util.*
 
 class WeatherInfoAdapter(private val weatherReport: List<WeatherReport>) :
     RecyclerView.Adapter<WeatherInfoViewHolder>() {
@@ -18,7 +19,7 @@ class WeatherInfoAdapter(private val weatherReport: List<WeatherReport>) :
         val weatherData = weatherReport[position]
         val itemTitle = convertToCelsius(weatherData.temperature)
         val itemImage = "https://openweathermap.org/img/wn/${weatherData.icon}.png"
-        val itemSubtitle = SimpleDateFormat.getDateInstance().format(weatherData.date)
+        val itemSubtitle = SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault()).format(Date(weatherData.date*1000))
         holder.bind(itemTitle, itemImage, itemSubtitle)
     }
 
