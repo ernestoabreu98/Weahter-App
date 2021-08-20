@@ -37,6 +37,5 @@
             android:layout_marginBottom="@dimen/margin_10_dp"
             android:text="@string/date_textview"
             android:layout_gravity="center"/>
-
     </LinearLayout>
 </androidx.cardview.widget.CardView>

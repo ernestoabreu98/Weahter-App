@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.entities.WeatherReport
 import com.example.weatherapp.R
+import com.example.weatherapp.presentation.activities.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WeatherInfoAdapter(private val weatherReport: List<WeatherReport>) :
+class WeatherInfoAdapter(private val weatherReport: List<WeatherReport>, private val onItemClickListener: MainActivity.OnItemClickListener) :
     RecyclerView.Adapter<WeatherInfoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherInfoViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -21,6 +22,10 @@ class WeatherInfoAdapter(private val weatherReport: List<WeatherReport>) :
         val itemImage = "https://openweathermap.org/img/wn/${weatherData.icon}.png"
         val itemSubtitle = SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault()).format(Date(weatherData.date*1000))
         holder.bind(itemTitle, itemImage, itemSubtitle)
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener.onItemClick(weatherData)
+        }
     }
 
     override fun getItemCount(): Int = weatherReport.size

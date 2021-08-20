@@ -19,6 +19,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: WeatherInfoAdapter
+
+    interface OnItemClickListener{
+        fun onItemClick(dayReport: WeatherReport)
+    }
+
     private val viewModel by lazy {
         AppViewModelProvider(this).get(WeatherViewModel::class.java)
     }
@@ -27,11 +32,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        adapter = WeatherInfoAdapter(emptyList())
-        binding.apply {
-            this.recycler.layoutManager = GridLayoutManager(baseContext, 1)
-            this.recycler.adapter = adapter
-        }
         viewModel.oneCallResponse.observe(::getLifecycle, ::updateUI)
         viewModel.getWeatherReport()
     }
@@ -56,9 +56,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun fillRecyclerView(data: Event<Data<List<WeatherReport>>>) {
         adapter = data.peekContent().data?.let {
-            WeatherInfoAdapter(it)
+            WeatherInfoAdapter(it, object : OnItemClickListener {
+                override fun onItemClick(dayReport: WeatherReport) {
+                    Toast.makeText(this@MainActivity, "ItemClicked", Toast.LENGTH_SHORT).show()
+                }
+            })
         }!!
-        binding.recycler.adapter = adapter
+        binding.apply {
+            this.recycler.layoutManager = GridLayoutManager(baseContext, 1)
+            this.recycler.adapter = adapter
+        }
     }
 
     private fun showProgressBar() {
