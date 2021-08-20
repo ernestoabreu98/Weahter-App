@@ -20,10 +20,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-        android:layout_marginTop="@dimen/margin_20_dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/zero_dp"
+        android:layout_marginTop="@dimen/margin_20_dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="0dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="151dp"
+        android:layout_height="65dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler"
+        app:layout_constraintEnd_toEndOf="@+id/recycler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

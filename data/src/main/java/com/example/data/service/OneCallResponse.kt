@@ -9,7 +9,7 @@ data class OneCallResponse(
     @Json(name = "daily") val daily: List<OneCallDailyResponse>,
     @Json(name = "lat") val lat: Double,
     @Json(name = "lon") val lon: Double,
-): Serializable
+) : Serializable
 
 @JsonClass(generateAdapter = true)
 data class OneCallDailyResponse(
@@ -17,18 +17,18 @@ data class OneCallDailyResponse(
     @Json(name = "temp") val temp: OneCallTempResponse,
     @Json(name = "humidity") val humidity: Int,
     @Json(name = "weather") val weather: List<OneCallWeatherResponse>,
-): Serializable
+) : Serializable
 
 @JsonClass(generateAdapter = true)
 data class OneCallTempResponse(
     @Json(name = "day") val day: Double,
     @Json(name = "min") val min: Double,
     @Json(name = "max") val max: Double
-): Serializable
+) : Serializable
 
 @JsonClass(generateAdapter = true)
-data class OneCallWeatherResponse (
+data class OneCallWeatherResponse(
     @Json(name = "main") val main: String,
     @Json(name = "description") val description: String,
     @Json(name = "icon") val icon: String
-): Serializable
+) : Serializable
