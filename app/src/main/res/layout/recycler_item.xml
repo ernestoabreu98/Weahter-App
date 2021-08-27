@@ -19,7 +19,7 @@
             android:id="@+id/temperatureTexView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sample_text_view"
+            android:text="Sample Text"
             android:layout_gravity="center"
             android:textSize="@dimen/temperature_text_view_size"/>
         <ImageView
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_15_dp"
             android:layout_marginBottom="@dimen/margin_10_dp"
-            android:text="@string/date_textview"
+            android:text="Date Text View"
             android:layout_gravity="center"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

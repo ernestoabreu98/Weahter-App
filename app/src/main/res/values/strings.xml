@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">Weather App</string>
-    <string name="sample_text">Sample</string>
-    <string name="sample_text_view">Sample Text</string>
-    <string name="date_textview">Date TextView</string>
 </resources>

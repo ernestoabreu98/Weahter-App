@@ -14,6 +14,9 @@ class WeatherService {
     companion object {
 
         private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
+        private const val CONNECT_TIMEOUT: Long = 1
+        private const val READ_TIMEOUT: Long = 30
+        private const val WRITE_TIMEOUT: Long = 15
 
     }
 
@@ -21,9 +24,9 @@ class WeatherService {
 
     private fun getRetrofit(): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
-            .connectTimeout(1, TimeUnit.MINUTES)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(15, TimeUnit.SECONDS)
+            .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MINUTES)
+            .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             .build()
         return Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create()).build()

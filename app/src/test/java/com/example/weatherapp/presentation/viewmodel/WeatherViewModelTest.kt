@@ -7,9 +7,13 @@ import com.example.domain.entities.WeatherReport
 import com.example.domain.useCases.GetWeatherReportUseCase
 import com.example.domain.utils.Result
 import com.example.weatherapp.presentation.utils.Status
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull

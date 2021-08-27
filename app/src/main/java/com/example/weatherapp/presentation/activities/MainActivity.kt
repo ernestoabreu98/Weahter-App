@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.entities.WeatherReport
 import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapp.presentation.recyclerView.WeatherInfoAdapter
+import com.example.weatherapp.presentation.utils.Constants
 import com.example.weatherapp.presentation.utils.Data
 import com.example.weatherapp.presentation.utils.Event
 import com.example.weatherapp.presentation.utils.Status
@@ -17,12 +18,12 @@ import com.example.weatherapp.presentation.viewmodel.WeatherViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: WeatherInfoAdapter
-
-    interface OnItemClickListener{
+    interface OnItemClickListener {
         fun onItemClick(dayReport: WeatherReport)
     }
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: WeatherInfoAdapter
 
     private val viewModel by lazy {
         AppViewModelProvider(this).get(WeatherViewModel::class.java)
@@ -55,25 +56,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fillRecyclerView(data: Event<Data<List<WeatherReport>>>) {
-        adapter = data.peekContent().data?.let {
-            WeatherInfoAdapter(it, object : OnItemClickListener {
+        adapter = WeatherInfoAdapter(data.peekContent().data ?: emptyList(),
+            object : OnItemClickListener {
                 override fun onItemClick(dayReport: WeatherReport) {
-                    Toast.makeText(this@MainActivity, "ItemClicked", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, Constants.ITEM_CLICKED, Toast.LENGTH_SHORT).show()
                 }
             })
-        }!!
         binding.apply {
-            this.recycler.layoutManager = GridLayoutManager(baseContext, 1)
-            this.recycler.adapter = adapter
+            recycler.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+            recycler.adapter = adapter
         }
     }
+
 
     private fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE
     }
 
     private fun showRequestError() {
-        Toast.makeText(this, "Request Fail. Try Again", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, Constants.BAD_REQUEST, Toast.LENGTH_SHORT).show()
     }
 
     private fun hideProgressBar() {
